@@ -1,0 +1,39 @@
+CREATE TABLE PUBLIC.delivery(
+id_delivery INTEGER PRIMARY KEY,
+nombre_delivery CHAR(20) NOT NULL,
+apellido_delivery CHAR(20) NOT NULL);
+--
+COPY PUBLIC.delivery FROM 'C:\Users\Nitro\Desktop\Data_engineer\delivery.csv' DELIMITER ',' CSV HEADER;
+
+CREATE TABLE PUBLIC.tienda(
+id_tienda INTEGER PRIMARY KEY,
+mono_goodbag_price INTEGER NOT NULL,
+multi_goodbag_price INTEGER NOT NULL,
+multi_product_price INTEGER NOT NULL);
+--
+COPY PUBLIC.tienda FROM 'C:\Users\Nitro\Desktop\Data_engineer\tienda.csv' DELIMITER ',' CSV HEADER;
+
+CREATE TABLE PUBLIC.pedidos(
+id_pedidos INTEGER PRIMARY KEY,
+fecha_ped DATE NOT NULL,
+id_user INTEGER NOT NULL,
+id_delivery INTEGER NOT NULL,
+precio_delivery INTEGER NOT NULL,
+tipo_pago INTEGER NOT NULL,
+confirmacion_webpay INTEGER NOT NULL,
+cupon FLOAT NOT NULL,
+coins INTEGER NOT NULL,
+id_tienda INTEGER NOT NULL,
+mono_goodbag INTEGER NOT NULL,
+multi_goodbag INTEGER NOT NULL,
+multi_prod INTEGER NOT NULL);
+--
+COPY PUBLIC.pedidos FROM 'C:\Users\Nitro\Desktop\Data_engineer\pedidos.csv' DELIMITER ',' CSV HEADER;
+
+CREATE TABLE PUBLIC.users(
+id_user INTEGER PRIMARY KEY,
+fecha_ing DATE NOT NULL,
+n_pedidos INTEGER NOT NULL);
+--
+COPY PUBLIC.users FROM 'C:\Users\Nitro\Desktop\Data_engineer\users.csv' DELIMITER ',' CSV HEADER;
+
